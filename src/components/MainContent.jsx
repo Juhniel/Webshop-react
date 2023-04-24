@@ -1,5 +1,5 @@
 import Products from "./Products";
-
+import Reviews from "./Reviews";
 export default function MainContent() {
     return(
         <main className="max-w-4xl mx-auto">
@@ -22,11 +22,7 @@ export default function MainContent() {
 
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 
-            <section id="Reviews" className="p-6 my-12">
-                <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
-                    Reviews
-                </h2>
-            </section>
+            <Reviews />
 
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 

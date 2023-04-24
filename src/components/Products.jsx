@@ -9,9 +9,6 @@ export default function Products() {
         const data = await response.json();
         const products = Object.values(data);
         setProduct(products);
-
-        console.log(product)
-
     }
 
     useEffect(() => {
