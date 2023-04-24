@@ -1,17 +1,25 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Navbar() {
-    const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   function handleMenuClick() {
     setMobileMenuVisible(!mobileMenuVisible);
   }
 
   return (
-    <header className="bg-emerald-400 text-white sticky top-0 z-10">
+    <header className="bg-emerald-400 dark:bg-emerald-700 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
-        <a href="#hero"> <img src="../src/media/img/logo.png" alt="" className="w-1/4"/> </a>
-        <div>
+        <a href="#hero">
+          {" "}
+          <img
+            src="../src/media/img/logo.png"
+            alt=""
+            className="w-1/3 border-2 rounded-full"
+          />{" "}
+        </a>
+        <div className="flex items-center">
           <button
             onClick={handleMenuClick}
             id="hamburger-button"
@@ -19,18 +27,18 @@ export default function Navbar() {
           >
             &#9776;
           </button>
-          <nav className="hidden md:block space-x-8 text-xl" aria-label="main">
+          <nav className="hidden md:flex space-x-8 text-xl items-center" aria-label="main">
             <a href="#rockets" className="hover:opacity-90">
-              Pastries
+              Products
             </a>
             <a href="#testimonials" className="hover:opacity-90">
               Reviews
             </a>
             <a href="#contact" className="hover:opacity-90">
-              Contact 
+              Contact
             </a>
-            <a href="#contact" className="hover:opacity-90">
-               <img ></img>
+            <a href="#checkout" className="hover:opacity-90">
+              <FaShoppingCart />
             </a>
           </nav>
         </div>

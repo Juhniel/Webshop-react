@@ -58,9 +58,9 @@ export default function Products() {
               type="number"
               min={1}
               max={100}
-              className="mt-2 w-12 text-2xl text-center text-slate-500 border-2"
+              className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
             />
-            <button onClick={handleAddCart} className="text-slate-500 mt-2 text-2xl flex items-center justify-center">
+            <button onClick={handleAddCart} className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
               <BsCartPlus />
               <span className="ml-2">Add to cart</span>
             </button>
