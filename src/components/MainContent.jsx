@@ -1,10 +1,22 @@
 import Products from "./Products";
 import Reviews from "./Reviews";
 import ThemeToggle from "./ThemeToggle";
-
+import { useState, useEffect } from "react";
 
 export default function MainContent() {
+    const[theme, setTheme] = useState("light");
 
+    useEffect(() => {
+        if(theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme]);
+
+    function handleThemeSwitch() {
+        setTheme(theme === "dark" ? "light" : "dark");
+    }
     return(
         <main className="max-w-4xl mx-auto">
             <section id="hero" className="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12">
@@ -34,7 +46,7 @@ export default function MainContent() {
                     Contact Us
                 </h2>
             </section>
-            <ThemeToggle />
+            <ThemeToggle toggle={handleThemeSwitch}/>
         </main>
     )
 }
