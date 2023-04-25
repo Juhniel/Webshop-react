@@ -3,12 +3,11 @@ import Reviews from "./Reviews";
 import Contact from "./Contact";
 import ThemeToggle from "./ThemeToggle";
 
-
 import { useState, useEffect } from "react";
 
-export default function MainContent() {
+export default function MainContent({cartItemCount, handleAddToCart}) {
     const[theme, setTheme] = useState("light");
-
+ 
     useEffect(() => {
         if(theme === "dark") {
             document.documentElement.classList.add("dark");
@@ -38,7 +37,7 @@ export default function MainContent() {
 
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 
-            <Products />
+            <Products addToCart={handleAddToCart}/>
 
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 

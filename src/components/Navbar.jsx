@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 
-export default function Navbar() {
+export default function Navbar({cartItemCount}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
-
   function handleMenuClick() {
     setMobileMenuVisible(!mobileMenuVisible);
   }
@@ -41,7 +40,12 @@ export default function Navbar() {
             <a href="#checkout" className="hover:opacity-90">
               <FaShoppingCart />
             </a>
-            
+            {cartItemCount > 0 && (
+            <span className="absolute top-5 right-0 transform translate-x-3 bg-red-500
+             text-white rounded-full text-xs font-bold px-2 py-1">  
+              {cartItemCount}
+            </span>
+             )}
           </nav>
         </div>
       </section>

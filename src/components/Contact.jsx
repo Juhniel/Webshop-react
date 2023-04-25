@@ -13,13 +13,13 @@ export default function Contact() {
                 class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none" />
             <label for="subject">Subject:</label>
             <input type="text" id="subject" name="subject" required minlength="3" maxlength="60"
-                placeholder="Your Subject"
+                placeholder="Subject"
                 class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none" />
             <label for="message">Message:</label>
             <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message" required
                 class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"></textarea>
             <button
-                class="bg-teal-700 hover:bg-teal-600 active:bg-teal-500 text-white p-3 w-48 rounded-xl border border-solid border-slate-900 dark:border-none">Submit</button>
+                class="bg-teal-500 hover:bg-teal-300 active:bg-teal-500 text-white p-3 w-48 rounded-xl border border-solid border-slate-900 dark:border-none">Submit</button>
         </form>
     </section>
     )
