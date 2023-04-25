@@ -19,7 +19,7 @@ export default function Contact() {
             <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message" required
                 class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"></textarea>
             <button
-                class="bg-teal-500 hover:bg-teal-300 active:bg-teal-500 text-white p-3 w-48 rounded-xl border border-solid border-slate-900 dark:border-none">Submit</button>
+                class="bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 rounded-xl border border-solid border-slate-900  dark:bg-teal-800 dark:border-none">Submit</button>
         </form>
     </section>
     )

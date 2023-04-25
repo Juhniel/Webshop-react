@@ -4,9 +4,9 @@ export default function ThemeToggle({ toggle }) {
   return (
     <button
       onClick={toggle}
-      className="w-12 h-6 rounded-full p-1 bg-white dark:bg-gray-600 relative  transition-colors duration-500 ease-in  focus:outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-blue-600 focus:border-transparent"
+      className="w-12 h-6 rounded-full p-1 bg-white dark:bg-gray-white relative  transition-colors duration-500 ease-in  focus:outline-none focus:ring-2 focus:ring-white dark:focus:ring-white focus:border-transparent"
     >
-      <div id="toggle" class="rounded-full w-4 h-4 bg-blue-600 dark:bg-blue-500 relative ml-0 dark:ml-6 pointer-events-none transition-all duration-300 ease-out">
+      <div id="toggle" class="rounded-full w-4 h-4 bg-teal-500 dark:bg-teal-800 relative ml-0 dark:ml-6 pointer-events-none transition-all duration-300 ease-out">
       </div>
     </button>
   );

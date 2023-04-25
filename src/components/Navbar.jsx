@@ -1,23 +1,23 @@
 import React, { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 import { FaShoppingCart } from "react-icons/fa";
 
 
-export default function Navbar({cartItemCount}) {
+export default function Navbar({cartItemCount, toggle}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   function handleMenuClick() {
     setMobileMenuVisible(!mobileMenuVisible);
   }
 
   return (
-    <header className="bg-teal-500 dark:bg-emerald-700 text-white sticky top-0 z-10">
+    <header className="bg-teal-500 dark:bg-teal-800 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
         <a href="#hero">
-          {" "}
           <img
             src="../src/media/img/logo.png"
             alt=""
             className="w-1/3 border-2 rounded-full"
-          />{" "}
+          />
         </a>
         <div className="flex items-center">
           <button
@@ -41,11 +41,12 @@ export default function Navbar({cartItemCount}) {
               <FaShoppingCart />
             </a>
             {cartItemCount > 0 && (
-            <span className="absolute top-5 right-0 transform translate-x-3 bg-red-500
+            <span className="absolute top-5 right-20 transform translate-x-3 bg-red-500
              text-white rounded-full text-xs font-bold px-2 py-1">  
               {cartItemCount}
             </span>
              )}
+             <ThemeToggle toggle={toggle}/>
           </nav>
         </div>
       </section>

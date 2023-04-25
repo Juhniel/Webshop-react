@@ -1,7 +1,7 @@
 export default function Footer() {
 
     return(
-        <footer id="footer" className="bg-teal-500 text-white text-xl">
+        <footer id="footer" className="bg-teal-500 text-white text-xl dark:bg-teal-800">
             <section className="max-w-4xl mx-auto p-4 flex flex-col sm:flex-row sm:justify-between">
                 <adress>
                     k-pastries <br/>

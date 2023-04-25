@@ -1,24 +1,9 @@
 import Products from "./Products";
 import Reviews from "./Reviews";
 import Contact from "./Contact";
-import ThemeToggle from "./ThemeToggle";
 
-import { useState, useEffect } from "react";
-
-export default function MainContent({cartItemCount, handleAddToCart}) {
-    const[theme, setTheme] = useState("light");
- 
-    useEffect(() => {
-        if(theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    }, [theme]);
-
-    function handleThemeSwitch() {
-        setTheme(theme === "dark" ? "light" : "dark");
-    }
+export default function MainContent({handleAddToCart}) {
+   
     return(
         
         <main className="max-w-4xl mx-auto">
@@ -47,9 +32,7 @@ export default function MainContent({cartItemCount, handleAddToCart}) {
             
 
             <Contact />
-
             
-            {/* <ThemeToggle toggle={handleThemeSwitch}/> */}
         </main>
     )
 }
