@@ -5,6 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export default function Navbar({cartItemCount, toggle}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+ 
   function handleMenuClick() {
     setMobileMenuVisible(!mobileMenuVisible);
   }

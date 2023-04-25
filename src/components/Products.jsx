@@ -37,7 +37,7 @@ export default function Products({ addToCart}) {
         {product.map((productItem) => (
           <li
             key={productItem.id}
-            className="w-full md:w-1/4 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
+            className="md:w-1/4 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
           >
             <img
               src={`../src/media/img/${productItem.name}.png`}
@@ -53,7 +53,7 @@ export default function Products({ addToCart}) {
             <p className="sm:hidden text-2xl text-center text-slate-500 mt-2 dark:text-slate-400">
               {productItem.description}{" "}
             </p>
-
+    
             <input
               type="number"
               min={1}
@@ -65,6 +65,9 @@ export default function Products({ addToCart}) {
               <BsCartPlus />
               <span className="ml-2">Add to cart</span>
             </button>
+            <p className="hidden sm:block text-3xl text-center text-slate-500 dark:text-slate-400 mt-2">
+              {productItem.stock ? "In stock" : "Not in stock"}
+            </p>
           </li>
         ))}
       </ul>
