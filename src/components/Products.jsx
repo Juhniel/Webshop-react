@@ -28,16 +28,16 @@ export default function Products() {
   }, []);
 
   return (
-    <section id="rockets" className="p-6 my-12">
+    <section id="products" className="p-6 my-12">
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
-        Our Pastries
+        Our Products
         <i className=""></i>
       </h2>
-      <ul className="list-none mx-auto my-12 flex flex-col sm:flex-row items-center gap-8">
+      <ul className="list-none mx-auto my-12 flex flex-wrap items-center gap-8">
         {product.map((productItem) => (
           <li
             key={productItem.id}
-            className="w-2/3 sm:w-5/6 flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
+            className="w-full md:w-1/4 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
           >
             <img
               src={`../src/media/img/${productItem.name}.png`}
@@ -59,6 +59,7 @@ export default function Products() {
               min={1}
               max={100}
               className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
+              placeholder={1}
             />
             <button onClick={handleAddCart} className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
               <BsCartPlus />

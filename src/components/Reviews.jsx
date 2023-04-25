@@ -17,14 +17,14 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="Reviews" className="p-6 my-12">
+    <section id="reviews" className="p-6 my-12">
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
         Reviews
       </h2>
 
       {review.map((userReview) => (
         <figure key={userReview.id} className="my-12">
-          <blockquote className="bg-teal-600 dark:bg-black pl-14 pr-8 py-12 rounded-3xl relative">
+          <blockquote className="bg-teal-500 dark:bg-black pl-14 pr-8 py-12 rounded-3xl relative">
             <p
               className="text-2xl sm:text-3xl text-left mt-2 text-white
              dark:text-slate-400 before:content-['\201C'] before:font-serif before:absolute before:top-0 

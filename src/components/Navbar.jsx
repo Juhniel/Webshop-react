@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
+
 export default function Navbar() {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
@@ -9,7 +10,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="bg-emerald-400 dark:bg-emerald-700 text-white sticky top-0 z-10">
+    <header className="bg-teal-500 dark:bg-emerald-700 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
         <a href="#hero">
           {" "}
@@ -28,10 +29,10 @@ export default function Navbar() {
             &#9776;
           </button>
           <nav className="hidden md:flex space-x-8 text-xl items-center" aria-label="main">
-            <a href="#rockets" className="hover:opacity-90">
+            <a href="#products" className="hover:opacity-90">
               Products
             </a>
-            <a href="#testimonials" className="hover:opacity-90">
+            <a href="#reviews" className="hover:opacity-90">
               Reviews
             </a>
             <a href="#contact" className="hover:opacity-90">
@@ -40,6 +41,7 @@ export default function Navbar() {
             <a href="#checkout" className="hover:opacity-90">
               <FaShoppingCart />
             </a>
+            
           </nav>
         </div>
       </section>
@@ -54,22 +56,23 @@ export default function Navbar() {
         </button>
         <nav
           className="flex flex-col min-h-screen items-center py-8"
+          onClick={handleMenuClick}
           aria-label="mobile"
         >
           <a href="#hero" className="w-full text-center py-6 hover: opacity-90">
             Home
           </a>
           <a
-            href="#rockets"
+            href="#products"
             className="w-full text-center py-6 hover: opacity-90"
           >
-            Our Rockets
+            Products
           </a>
           <a
-            href="#testimonials"
+            href="#reviews"
             className="w-full text-center py-6 hover: opacity-90"
           >
-            Testimonials
+            Reviews
           </a>
           <a
             href="#contact"
