@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { BsCheckLg } from "react-icons/bs"
 import { BsXLg } from "react-icons/bs";
+import { BsBell } from "react-icons/bs"
 
 export default function Products({ addToCart}) {
   const [product, setProduct] = useState([]);
@@ -63,12 +64,16 @@ export default function Products({ addToCart}) {
               className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
               placeholder={1}
             />
-            <button onClick={() => handleAddCart(productItem)} className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
+             
+            
+            
+            {productItem.stock ?  <button onClick={() => handleAddCart(productItem)} className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
               <BsCartPlus />
-              <span className="ml-2">Add to cart</span>
-            </button>
+              <span className="ml-3 text-xl">Add to cart</span>
+            </button> : <button className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600"> <BsBell /> <span className="ml-2 text-xl">Notify me</span> </button>}
+           
             <p className="hidden sm:flex text-center text-slate-500 dark:text-slate-400 mt-2">
-              {productItem.stock ?  <><BsCheckLg color="green" size={29}/>  <span className="mx-1 text-xl">In stock</span></>  : <><BsXLg color="red" size={28}/><span className="inline text-xl mx-1">Not available</span></> }
+              {productItem.stock ?  <><BsCheckLg color="green" size={29}/>  <span className="ml-2 text-xl">In stock</span></>  : <><BsXLg color="red" size={28}/><span className="inline text-xl mx-1">Not available</span></> }
             </p>
           </li>
         ))}
