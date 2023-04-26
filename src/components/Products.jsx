@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { BsCartPlus } from "react-icons/bs";
+import { BsCheckLg } from "react-icons/bs"
+import { BsXLg } from "react-icons/bs";
 
 export default function Products({ addToCart}) {
   const [product, setProduct] = useState([]);
-
+  // const checkMark = <FcCheckMark />
 
   // adding to cart
   function handleAddCart(productItem) {
@@ -37,12 +39,12 @@ export default function Products({ addToCart}) {
         {product.map((productItem) => (
           <li
             key={productItem.id}
-            className="md:w-1/4 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
+            className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
           >
             <img
               src={`../src/media/img/${productItem.name}.png`}
               alt={productItem.name}
-              className="w-1/2 mb-6"
+              className="object-fit:cover h-24 mb-6"
             />
             <h3 className="text-3xl text-center text-slate-900 dark:text-white">
               {productItem.name}
@@ -65,8 +67,8 @@ export default function Products({ addToCart}) {
               <BsCartPlus />
               <span className="ml-2">Add to cart</span>
             </button>
-            <p className="hidden sm:block text-3xl text-center text-slate-500 dark:text-slate-400 mt-2">
-              {productItem.stock ? "In stock" : "Not in stock"}
+            <p className="hidden sm:flex text-center text-slate-500 dark:text-slate-400 mt-2">
+              {productItem.stock ?  <><BsCheckLg color="green" size={29}/>  <span className="mx-1 text-xl">In stock</span></>  : <><BsXLg color="red" size={28}/><span className="inline text-xl mx-1">Not available</span></> }
             </p>
           </li>
         ))}
