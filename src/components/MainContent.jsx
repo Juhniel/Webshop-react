@@ -3,7 +3,6 @@ import Reviews from "./Reviews";
 import Contact from "./Contact";
 
 export default function MainContent({handleAddToCart}) {
-   
     return(
         
         <main className="max-w-4xl mx-auto">

@@ -1,9 +1,9 @@
 // import { useState } from "react";
-import {BsTrash3} from "react-icons/bs"
+import { BsTrash3 } from "react-icons/bs";
 
 export default function Checkout({ cart }) {
-//   const [cartProduct, setCartProduct] = useState([]);
-  
+  //   const [cartProduct, setCartProduct] = useState([]);
+
   return (
     <section
       id="checkout"
@@ -12,62 +12,81 @@ export default function Checkout({ cart }) {
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
         Checkout
       </h2>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">Image</span>
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Product
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Qty
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
+              <th scope="col" className="px-6 py-3">
+                <span className="sr-only">Image</span>
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Product
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Amount
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Total
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             {cart.map((productItem) => (
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-32 p-4">
-                    <img src={`../src/media/img/${productItem.name}.png`} />
+              <tr
+                key={productItem.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="w-32 p-4">
+                  <img src={`../src/media/img/${productItem.name}.png`} />
                 </td>
-                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    {productItem.name}
+                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  {productItem.name}
                 </td>
-                <td class="px-6 py-4">
-                    <div class="flex items-center space-x-3">
-                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                            <span class="sr-only">Quantity button</span>
-                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        </button>
-                        <div>
-                            <input type="number" id="first_product" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required />
-                        </div>
-                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                            <span class="sr-only">Quantity button</span>
-                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                        </button>
-                    </div>
+                <td className="px-6 py-4">
+                  <input
+                    type="number"
+                    id="first_product"
+                    className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1"
+                    required
+                  />
                 </td>
-                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    {productItem.price}
+                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  {productItem.price}
                 </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  {1}
                 </td>
-            </tr> 
-            ))};
-        </tbody>
-    </table>
-</div>
+                <td className="px-6 py-4">
+                  <a
+                    href="#"
+                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                  >
+                    Remove
+                  </a>
+                </td>
+              </tr>
+            ))}
+            <tr className="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+              <td
+                colSpan="5"
+                className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-right"
+              >
+                Total Price:
+              </td>
+              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                {1}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       {/* <table className="w-full min-w-max">
         <thead>
           <tr>
