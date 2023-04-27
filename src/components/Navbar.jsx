@@ -87,10 +87,10 @@ export default function Navbar({cartItemCount, toggle}) {
             Contact Us
           </a>
           <a
-            href="#legal"
+            href="#checkout"
             className="w-full text-center py-6 hover: opacity-90"
           >
-            Legal
+            Checkout
           </a>
         </nav>
       </section>

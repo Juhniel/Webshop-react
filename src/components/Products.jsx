@@ -6,14 +6,12 @@ import { BsBell } from "react-icons/bs"
 
 export default function Products({ addToCart}) {
   const [product, setProduct] = useState([]);
-  // const checkMark = <FcCheckMark />
+
 
   // adding to cart
   function handleAddCart(productItem) {
     addToCart(productItem);
   }
-
-  // Fetch products
 
   async function getProducts() {
     const url =

@@ -1,7 +1,6 @@
 import Navbar from "./components/Navbar"
 import MainContent from "./components/MainContent"
 import Footer from "./components/Footer"
-// import ThemeToggle from "./components/ThemeToggle"
 import Checkout from "./components/Checkout"
 
 import { useState, useEffect } from "react";
@@ -9,10 +8,12 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const[theme, setTheme] = useState("light");
-  const [cartItemCount, setCartItemCount] = useState(0);
+  const [cart, setCart] = useState([]);
 
-  const handleAddToCart = () => {
-    setCartItemCount(cartItemCount + 1);
+  
+
+  const handleAddToCart = (productItem) => {
+    setCart([...cart, productItem]);
   };
 
   useEffect(() => {
@@ -30,9 +31,9 @@ export default function App() {
 
   return (
     <>
-      <Navbar cartItemCount={cartItemCount} toggle={handleThemeSwitch}/>
-      <MainContent cartItemCount={cartItemCount} handleAddToCart={handleAddToCart} />
-      <Checkout />
+      <Navbar cartItemCount={cart.length} toggle={handleThemeSwitch} />
+      <MainContent handleAddToCart={handleAddToCart} />
+      {cart.length > 0 && <Checkout cart={cart} />}
       <Footer />
     </>
   )
