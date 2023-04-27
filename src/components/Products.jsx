@@ -64,9 +64,7 @@ export default function Products({ addToCart}) {
               className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
               placeholder={1}
             />
-             
-            
-            
+
             {productItem.stock ?  <button onClick={() => handleAddCart(productItem)} className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
               <BsCartPlus />
               <span className="ml-3 text-xl">Add to cart</span>

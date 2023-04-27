@@ -1,9 +1,11 @@
 import Navbar from "./components/Navbar"
 import MainContent from "./components/MainContent"
 import Footer from "./components/Footer"
-import ThemeToggle from "./components/ThemeToggle"
+// import ThemeToggle from "./components/ThemeToggle"
+import Checkout from "./components/Checkout"
 
 import { useState, useEffect } from "react";
+
 
 export default function App() {
   const[theme, setTheme] = useState("light");
@@ -30,6 +32,7 @@ export default function App() {
     <>
       <Navbar cartItemCount={cartItemCount} toggle={handleThemeSwitch}/>
       <MainContent cartItemCount={cartItemCount} handleAddToCart={handleAddToCart} />
+      <Checkout />
       <Footer />
     </>
   )
