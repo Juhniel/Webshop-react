@@ -92,7 +92,8 @@ export default function Checkout({ cart }) {
         </table>
       </div>
       <div className="w-full flex justify-end">
-        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
+      <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
+        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Empty Cart</button>
         <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-40 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Checkout</button>
         </div>
 
