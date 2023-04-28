@@ -1,8 +1,12 @@
 // import { useState } from "react";
-import { BsTrash3 } from "react-icons/bs";
+// import { BsTrash3 } from "react-icons/bs";
 
 export default function Checkout({ cart }) {
-  //   const [cartProduct, setCartProduct] = useState([]);
+
+  function handleAmountChange(e, productItem) {
+    const updatedAmount = parseInt(e.target.value) || 1;
+    updateCartItemAmount(productItem, updatedAmount);
+  }
 
   return (
     <section
@@ -51,9 +55,9 @@ export default function Checkout({ cart }) {
                 <td className="px-6 py-4">
                   <input
                     type="number"
-                    id="first_product"
                     className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="1"
+                    defaultValue={productItem.amount}
+                    onChange={(e) => handleAmountChange(e, productItem)}
                     required
                   />
                 </td>
@@ -87,55 +91,11 @@ export default function Checkout({ cart }) {
           </tbody>
         </table>
       </div>
-      {/* <table className="w-full min-w-max">
-        <thead>
-          <tr>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Img
-            </th>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Name
-            </th>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Price
-            </th>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Amount
-            </th>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Total price
-            </th>
-            <th className="bg-gray-200 p-3 border border-solid border-gray-300 text-center font-medium text-sm capitalize">
-              Remove
-            </th>
-          </tr>
-        </thead>
+      <div className="w-full flex justify-end">
+        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
+        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-40 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Checkout</button>
+        </div>
 
-        <tbody>
-          {cart.map((productItem) => (
-            <tr key={productItem.id}>
-              <td className="w-32 p-3 border border-solid border-gray-300 text-center">
-                <img src={`../src/media/img/${productItem.name}.png`}></img>
-              </td>
-              <td className="w-32 p-3 border border-solid border-gray-300 text-center">
-                {productItem.name}
-              </td>
-              <td className="w-32 p-3 border border-solid border-gray-300 text-center">
-                {productItem.price}
-              </td>
-              <td className="w-32 p-3 border border-solid border-gray-300 text-center">
-                test
-              </td>
-              <td className="w-32 p-3 border border-solid border-gray-300 text-center">
-                {productItem.price*2}
-              </td>
-              <td className="w-32 p-3 border border-solid border-gray-300 align-center mx-4">
-                 <BsTrash3 size={50}/>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </section>
   );
 }
