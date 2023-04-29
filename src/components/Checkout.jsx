@@ -1,15 +1,21 @@
 // import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
 
-export default function Checkout({ cart, updateCartItemAmount, removeFromCart, hideCheckout, emptyCart, orderConfirm}) {
-
+export default function Checkout({
+  cart,
+  updateCartItemAmount,
+  removeFromCart,
+  hideCheckout,
+  emptyCart,
+  orderConfirm,
+}) {
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
     updateCartItemAmount(productItem, updatedAmount);
   }
 
   function calculateTotalPrice() {
-     return cart.reduce((total, item) => total + item.amount * item.price, 0);
+    return cart.reduce((total, item) => total + item.amount * item.price, 0);
   }
 
   return (
@@ -24,9 +30,7 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
-              
-              </th>
+              <th scope="col" className="px-6 py-3"></th>
               <th scope="col" className="px-6 py-3">
                 Product
               </th>
@@ -71,7 +75,7 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
                   ${productItem.price}
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  ${productItem.amount*productItem.price}
+                  ${productItem.amount * productItem.price}
                 </td>
                 <td className="px-6 py-4">
                   <a
@@ -79,7 +83,7 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
                     onClick={() => removeFromCart(productItem)}
                   >
-                    <BsTrash3/>
+                    <BsTrash3 />
                   </a>
                 </td>
               </tr>
@@ -92,18 +96,43 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
                 {cart.length > 0 ? "Total Price:" : "Your cart is empty"}
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-xl">
-              {cart.length > 0 ? `$${calculateTotalPrice()}` : ""} 
+                {cart.length > 0 ? `$${calculateTotalPrice()}` : ""}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div className="w-full flex justify-end py-2">
-        <button onClick={hideCheckout} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Continue Shopping</button>
-        <button onClick={emptyCart} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Empty Cart</button>
-        <button onClick={orderConfirm} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Checkout</button>
-        </div>
-
+        {cart.length > 0 ? (
+          <>
+            <button
+              onClick={hideCheckout}
+              className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded"
+            >
+              Continue Shopping
+            </button>
+            <button
+              onClick={emptyCart}
+              className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded"
+            >
+              Empty Cart
+            </button>
+            <button
+              onClick={orderConfirm}
+              className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded"
+            >
+              Checkout
+            </button>{" "}
+          </>
+        ) : (
+          <button
+            onClick={hideCheckout}
+            className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded"
+          >
+            Continue Shopping
+          </button>
+        )}
+      </div>
     </section>
   );
 }

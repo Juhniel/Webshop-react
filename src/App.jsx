@@ -10,8 +10,40 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [checkoutVisible, setCheckoutVisible] = useState(false);
   const [orderConfirmVisible, setOrderConfirmVisible] = useState(false)
+  const [orderStatus, setOrderStatus] = useState(false);
 
-  function handleCheckoutPayment() {
+  async function handleCheckoutPayment() {
+    const url = "https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products.json";
+  
+    // Fetch the current stock from Firebase
+    const response = await fetch(url);
+    const data = await response.json();
+  
+    // Update stock for each product in the cart
+    for (const cartItem of cart) {
+      const productKey = `Product${cartItem.id}`;
+      const productStock = data[productKey]?.stock;
+  
+      if (productStock !== undefined && productStock >= cartItem.amount) {
+        const updatedStock = productStock - cartItem.amount;
+  
+        const options = {
+          method: "PATCH",
+          body: JSON.stringify({ stock: updatedStock }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+  
+        // Update the stock in Firebase
+        await fetch(`https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products/${productKey}.json`, options);
+        setOrderStatus(true);
+      } else {
+        // Handle the case when there's not enough stock
+        setOrderStatus(false);
+        console.error(`Not enough stock for product with id: ${cartItem.id}`);
+      }
+    }
     emptyCart();
     setOrderConfirmVisible(true);
   }
@@ -83,8 +115,10 @@ export default function App() {
           cart={cart}
         />
       )}
-      <OrderConfirm visible={orderConfirmVisible}
-      onClose={() => setOrderConfirmVisible(false)}
+      <OrderConfirm 
+        visible={orderConfirmVisible} 
+        orderStatus={orderStatus}
+        onClose={() => setOrderConfirmVisible(false)}
       />
       <Footer />
     </>
