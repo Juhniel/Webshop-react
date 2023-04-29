@@ -1,11 +1,15 @@
 // import { useState } from "react";
-// import { BsTrash3 } from "react-icons/bs";
+import { BsTrash3 } from "react-icons/bs";
 
-export default function Checkout({ cart, updateCartItemAmount, removeFromCart, hideCheckout, emptyCart}) {
+export default function Checkout({ cart, updateCartItemAmount, removeFromCart, hideCheckout, emptyCart, orderConfirm}) {
 
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
     updateCartItemAmount(productItem, updatedAmount);
+  }
+
+  function calculateTotalPrice() {
+     return cart.reduce((total, item) => total + item.amount * item.price, 0);
   }
 
   return (
@@ -75,7 +79,7 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
                     onClick={() => removeFromCart(productItem)}
                   >
-                    Remove
+                    <BsTrash3/>
                   </a>
                 </td>
               </tr>
@@ -85,19 +89,19 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, h
                 colSpan="5"
                 className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-right text-xl"
               >
-                Total Price:
+                {cart.length > 0 ? "Total Price:" : "Your cart is empty"}
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-xl">
-              ${cart.reduce((total, item) => total + item.amount * item.price, 0)}
+              {cart.length > 0 ? `$${calculateTotalPrice()}` : ""} 
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div className="w-full flex justify-end py-2">
-        <button onClick={hideCheckout} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Continue Shopping </button>
-        <button onClick={emptyCart} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Empty Cart </button>
-        <button className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Checkout </button>
+        <button onClick={hideCheckout} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Continue Shopping</button>
+        <button onClick={emptyCart} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Empty Cart</button>
+        <button onClick={orderConfirm} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Checkout</button>
         </div>
 
     </section>

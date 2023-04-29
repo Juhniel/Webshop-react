@@ -2,13 +2,21 @@ import Navbar from "./components/Navbar";
 import MainContent from "./components/MainContent";
 import Footer from "./components/Footer";
 import Checkout from "./components/Checkout";
-
+import OrderConfirm from "./components/OrderConfirm";
 import { useState, useEffect } from "react";
 
 export default function App() {
   const [theme, setTheme] = useState("light");
   const [cart, setCart] = useState([]);
   const [checkoutVisible, setCheckoutVisible] = useState(false);
+  const [orderConfirmVisible, setOrderConfirmVisible] = useState(false)
+
+  function handleCheckoutPayment() {
+    emptyCart();
+    setOrderConfirmVisible(true);
+  }
+
+  
 
   const updateCartItemAmount = (productItem, updatedAmount) => {
     const updatedCart = cart.map((item) =>
@@ -66,6 +74,7 @@ export default function App() {
           removeFromCart={removeFromCart}
           emptyCart={emptyCart}
           hideCheckout={hideCheckout}
+          orderConfirm={handleCheckoutPayment}
         />
       ) : (
         <MainContent
@@ -74,6 +83,9 @@ export default function App() {
           cart={cart}
         />
       )}
+      <OrderConfirm visible={orderConfirmVisible}
+      onClose={() => setOrderConfirmVisible(false)}
+      />
       <Footer />
     </>
   );

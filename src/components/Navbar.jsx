@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { FaShoppingCart } from "react-icons/fa";
 
-
-export default function Navbar({cartItemCount, toggleTheme, showCheckout, hideCheckout}) {
+export default function Navbar({
+  cartItemCount,
+  toggleTheme,
+  showCheckout,
+  hideCheckout,
+}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
- 
+
   function handleMenuClick() {
     setMobileMenuVisible((prevState) => !prevState);
   }
@@ -28,26 +32,43 @@ export default function Navbar({cartItemCount, toggleTheme, showCheckout, hideCh
           >
             &#9776;
           </button>
-          <nav className="hidden md:flex space-x-8 text-xl items-center" aria-label="main">
-            <a href="#products" className="hover:opacity-90" onClick={hideCheckout}>
+          <nav
+            className="hidden md:flex space-x-8 text-xl items-center"
+            aria-label="main"
+          >
+            <a
+              href="#products"
+              className="hover:opacity-90"
+              onClick={hideCheckout}
+            >
               Products
             </a>
-            <a href="#reviews" className="hover:opacity-90" onClick={hideCheckout}>
+            <a
+              href="#reviews"
+              className="hover:opacity-90"
+              onClick={hideCheckout}
+            >
               Reviews
             </a>
-            <a href="#contact" className="hover:opacity-90" onClick={hideCheckout}>
+            <a
+              href="#contact"
+              className="hover:opacity-90"
+              onClick={hideCheckout}
+            >
               Contact
             </a>
             <a href="#" className="hover:opacity-90" onClick={showCheckout}>
               <FaShoppingCart />
             </a>
             {cartItemCount > 0 && (
-            <span className="absolute top-5 right-20 transform translate-x-3 bg-red-500
-             text-white rounded-full text-xs font-bold px-2 py-1">  
-              {cartItemCount}
-            </span>
-             )}
-             <ThemeToggle toggleTheme={toggleTheme}/>
+              <span
+                className="absolute top-5 right-20 transform translate-x-3 bg-red-500
+             text-white rounded-full text-xs font-bold px-2 py-1"
+              >
+                {cartItemCount}
+              </span>
+            )}
+            <ThemeToggle toggleTheme={toggleTheme} />
           </nav>
         </div>
       </section>
@@ -65,22 +86,29 @@ export default function Navbar({cartItemCount, toggleTheme, showCheckout, hideCh
           onClick={handleMenuClick}
           aria-label="mobile"
         >
-          <a href="#hero" className="w-full text-center py-6 hover: opacity-90">
+          <a
+            href="#hero"
+            className="w-full text-center py-6 hover: opacity-90"
+            onClick={hideCheckout}
+          >
             Home
           </a>
           <a
             href="#products"
             className="w-full text-center py-6 hover: opacity-90"
+            onClick={hideCheckout}
           >
             Products
           </a>
           <a
+            onClick={hideCheckout}
             href="#reviews"
             className="w-full text-center py-6 hover: opacity-90"
           >
             Reviews
           </a>
           <a
+            onClick={hideCheckout}
             href="#contact"
             className="w-full text-center py-6 hover: opacity-90"
           >
@@ -88,6 +116,7 @@ export default function Navbar({cartItemCount, toggleTheme, showCheckout, hideCh
           </a>
           <a
             href="#checkout"
+            onClick={showCheckout}
             className="w-full text-center py-6 hover: opacity-90"
           >
             Checkout
