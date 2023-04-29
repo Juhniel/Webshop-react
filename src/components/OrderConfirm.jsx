@@ -31,7 +31,8 @@ export default function OrderConfirm({ visible, orderStatus, onClose }) {
                 sending them on your way shortly... ` : "Please try again or contact us at k-pastries@bakery.com"}
             </p>
             <p className="flex justify-center">
-              {orderStatus ? <><BsHeartFill color="red" /> <BsHeartFill color="red" /> <BsHeartFill color="red" /> </> : <BsHeartbreakFill color="red"/>}
+              {orderStatus ? <><BsHeartFill className="mr-1" color="red" /> <BsHeartFill className="mr-1" color="red" /> <BsHeartFill  className="mr-1" color="red" /> </> 
+              : <><BsHeartbreakFill className="mr-1" color="red"/> <BsHeartbreakFill className="mr-1" color="red"/> <BsHeartbreakFill className="mr-1" color="red"/></>}
             </p>
           </div>
           <div className="flex items-center justify-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

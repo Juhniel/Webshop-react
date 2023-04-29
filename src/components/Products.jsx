@@ -72,9 +72,6 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               <p className="hidden sm:block text-3xl text-center text-slate-500 dark:text-slate-400 mt-2">
                 ${productItem.price}
               </p>
-              <p className="sm:hidden text-2xl text-center text-slate-500 mt-2 dark:text-slate-400">
-                {productItem.description}
-              </p>
 
               <input
                 type="number"
@@ -105,10 +102,10 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
                 </button>
               )}
 
-              <p className="hidden sm:flex text-center text-slate-500 dark:text-slate-400 mt-2">
+              <p className="mb:flex text-center text-slate-500 dark:text-slate-400 mt-2">
                 {productItem.stock > 0 ? (
                   <>
-                    <BsCheckLg color="green" size={29} />
+                    <BsCheckLg color="green" className="hidden sm:inline-block" size={29} />
                     <span className="ml-2 text-xl">
                       In stock ({productItem.stock})
                     </span>

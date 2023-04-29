@@ -83,7 +83,7 @@ export default function Checkout({
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
                     onClick={() => removeFromCart(productItem)}
                   >
-                    <BsTrash3 />
+                    <BsTrash3 className="text-xl"/>
                   </a>
                 </td>
               </tr>

@@ -38,13 +38,11 @@ export default function App() {
         // Update the stock in Firebase
         await fetch(`https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products/${productKey}.json`, options);
         setOrderStatus(true);
+        emptyCart();
       } else {
-        // Handle the case when there's not enough stock
         setOrderStatus(false);
-        console.error(`Not enough stock for product with id: ${cartItem.id}`);
       }
     }
-    emptyCart();
     setOrderConfirmVisible(true);
   }
 
