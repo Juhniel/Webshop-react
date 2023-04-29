@@ -1,7 +1,7 @@
 // import { useState } from "react";
 // import { BsTrash3 } from "react-icons/bs";
 
-export default function Checkout({ cart }) {
+export default function Checkout({ cart, updateCartItemAmount, removeFromCart, toggleCheckout}) {
 
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
@@ -65,12 +65,13 @@ export default function Checkout({ cart }) {
                   {productItem.price}
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {1}
+                  {productItem.amount*productItem.price}
                 </td>
                 <td className="px-6 py-4">
                   <a
                     href="#"
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                    onClick={() => removeFromCart(productItem)}
                   >
                     Remove
                   </a>
@@ -85,14 +86,14 @@ export default function Checkout({ cart }) {
                 Total Price:
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {1}
+              {cart.reduce((total, item) => total + item.amount * item.price, 0)}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div className="w-full flex justify-end">
-      <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
+      <button onClick={toggleCheckout} className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
         <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Empty Cart</button>
         <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-40 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Checkout</button>
         </div>

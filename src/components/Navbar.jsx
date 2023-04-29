@@ -3,11 +3,11 @@ import ThemeToggle from "./ThemeToggle";
 import { FaShoppingCart } from "react-icons/fa";
 
 
-export default function Navbar({cartItemCount, toggle}) {
+export default function Navbar({cartItemCount, toggleTheme, toggleCheckout}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
  
   function handleMenuClick() {
-    setMobileMenuVisible(!mobileMenuVisible);
+    setMobileMenuVisible((prevState) => !prevState);
   }
 
   return (
@@ -38,7 +38,7 @@ export default function Navbar({cartItemCount, toggle}) {
             <a href="#contact" className="hover:opacity-90">
               Contact
             </a>
-            <a href="#checkout" className="hover:opacity-90">
+            <a href="#checkout" className="hover:opacity-90" onClick={toggleCheckout}>
               <FaShoppingCart />
             </a>
             {cartItemCount > 0 && (
@@ -47,7 +47,7 @@ export default function Navbar({cartItemCount, toggle}) {
               {cartItemCount}
             </span>
              )}
-             <ThemeToggle toggle={toggle}/>
+             <ThemeToggle toggleTheme={toggleTheme}/>
           </nav>
         </div>
       </section>
