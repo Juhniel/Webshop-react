@@ -22,8 +22,17 @@ export default function App() {
     setCart(updatedCart);
   };
 
-  function toggleCheckout() {
-    setCheckoutVisible(!checkoutVisible);
+  const emptyCart = () => {
+    setCart([]);
+    showCheckout();
+  };
+
+  function showCheckout() {
+    setCheckoutVisible(true);
+  }
+
+  function hideCheckout() {
+    setCheckoutVisible(false)
   }
 
   const handleAddToCart = (productItem) => {
@@ -47,14 +56,16 @@ export default function App() {
       <Navbar
         cartItemCount={cart.length}
         toggleTheme={handleThemeSwitch}
-        toggleCheckout={toggleCheckout}
+        showCheckout={showCheckout}
+        hideCheckout={hideCheckout}
       />
       {checkoutVisible ? (
         <Checkout
           cart={cart}
           updateCartItemAmount={updateCartItemAmount}
           removeFromCart={removeFromCart}
-          toggleCheckout={toggleCheckout}
+          emptyCart={emptyCart}
+          hideCheckout={hideCheckout}
         />
       ) : (
         <MainContent

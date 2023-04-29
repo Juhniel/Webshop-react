@@ -1,7 +1,7 @@
 // import { useState } from "react";
 // import { BsTrash3 } from "react-icons/bs";
 
-export default function Checkout({ cart, updateCartItemAmount, removeFromCart, toggleCheckout}) {
+export default function Checkout({ cart, updateCartItemAmount, removeFromCart, hideCheckout, emptyCart}) {
 
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
@@ -11,9 +11,9 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, t
   return (
     <section
       id="checkout"
-      className="p-6 my-12 scroll-mt-16 widescreen:section-min-height tallscreen:section-min-height"
+      className="pt-2 pb-96 my-12 scroll-mt-16 widescreen:section-min-height tallscreen:section-min-height"
     >
-      <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
+      <h2 className="text-4xl font-bold text-center sm:text-5xl mb-14 text-slate-900 dark:text-white">
         Checkout
       </h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -21,7 +21,7 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, t
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Image</span>
+              
               </th>
               <th scope="col" className="px-6 py-3">
                 Product
@@ -58,14 +58,16 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, t
                     className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     defaultValue={productItem.amount}
                     onChange={(e) => handleAmountChange(e, productItem)}
+                    min={1}
+                    max={productItem.stock}
                     required
                   />
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {productItem.price}
+                  ${productItem.price}
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {productItem.amount*productItem.price}
+                  ${productItem.amount*productItem.price}
                 </td>
                 <td className="px-6 py-4">
                   <a
@@ -81,21 +83,21 @@ export default function Checkout({ cart, updateCartItemAmount, removeFromCart, t
             <tr className="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
               <td
                 colSpan="5"
-                className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-right"
+                className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-right text-xl"
               >
                 Total Price:
               </td>
-              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-              {cart.reduce((total, item) => total + item.amount * item.price, 0)}
+              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-xl">
+              ${cart.reduce((total, item) => total + item.amount * item.price, 0)}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className="w-full flex justify-end">
-      <button onClick={toggleCheckout} className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Continue Shopping</button>
-        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-48 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Empty Cart</button>
-        <button className="m-2 bg-teal-500 hover:opacity-90 active:bg-teal-500 text-white p-3 w-40 border border-solid rounded-xl border-slate-900  dark:bg-teal-800 dark:border-none">Checkout</button>
+      <div className="w-full flex justify-end py-2">
+        <button onClick={hideCheckout} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Continue Shopping </button>
+        <button onClick={emptyCart} className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Empty Cart </button>
+        <button className="m-2 bg-teal-500 hover:opacity-90 text-white font-bold py-2 px-4 border-b-4 border-teal-700 rounded">Checkout </button>
         </div>
 
     </section>

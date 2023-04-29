@@ -3,7 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 import { FaShoppingCart } from "react-icons/fa";
 
 
-export default function Navbar({cartItemCount, toggleTheme, toggleCheckout}) {
+export default function Navbar({cartItemCount, toggleTheme, showCheckout, hideCheckout}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
  
   function handleMenuClick() {
@@ -13,7 +13,7 @@ export default function Navbar({cartItemCount, toggleTheme, toggleCheckout}) {
   return (
     <header className="bg-teal-500 dark:bg-teal-800 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
-        <a href="#hero">
+        <a href="#hero" onClick={hideCheckout}>
           <img
             src="../src/media/img/logo.png"
             alt=""
@@ -29,16 +29,16 @@ export default function Navbar({cartItemCount, toggleTheme, toggleCheckout}) {
             &#9776;
           </button>
           <nav className="hidden md:flex space-x-8 text-xl items-center" aria-label="main">
-            <a href="#products" className="hover:opacity-90">
+            <a href="#products" className="hover:opacity-90" onClick={hideCheckout}>
               Products
             </a>
-            <a href="#reviews" className="hover:opacity-90">
+            <a href="#reviews" className="hover:opacity-90" onClick={hideCheckout}>
               Reviews
             </a>
-            <a href="#contact" className="hover:opacity-90">
+            <a href="#contact" className="hover:opacity-90" onClick={hideCheckout}>
               Contact
             </a>
-            <a href="#checkout" className="hover:opacity-90" onClick={toggleCheckout}>
+            <a href="#" className="hover:opacity-90" onClick={showCheckout}>
               <FaShoppingCart />
             </a>
             {cartItemCount > 0 && (

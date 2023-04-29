@@ -59,7 +59,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
           return (
             <li
               key={productItem.id}
-              className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-black py-6 px-2 rounded-3xl shadow-xl"
+              className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-gray-800 py-6 px-2 rounded-3xl shadow-xl"
             >
               <img
                 src={`../src/media/img/${productItem.name}.png`}
@@ -79,7 +79,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               <input
                 type="number"
                 min={1}
-                max={100}
+                max={productItem.stock}
                 className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
                 defaultValue={1}
                 ref={inputRefs.current[productItem.id]}
