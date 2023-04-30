@@ -65,7 +65,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
           return (
             <li
               key={productItem.id}
-              className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-white dark:bg-gray-800 py-6 px-2 rounded-3xl shadow-xl"
+              className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-teal-50 dark:bg-gray-800 py-6 px-2 rounded-3xl shadow-xl"
             >
               <img
                 src={`../src/media/img/${productItem.name}.png`}
