@@ -3,6 +3,7 @@ import { BsCartPlus } from "react-icons/bs";
 import { BsCheckLg } from "react-icons/bs"
 import { BsXLg } from "react-icons/bs";
 import { BsBell } from "react-icons/bs"
+import SearchForm from "./SearchForm";
 
 export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const [product, setProduct] = useState([]);
@@ -52,6 +53,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
         Our Products
       </h2>
+      <SearchForm />
       <ul className="list-none mx-auto my-12 flex flex-wrap items-center gap-8">
         {product.map((productItem) => {
           const productInputValue = inputRefs.current[productItem.id];
