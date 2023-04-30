@@ -7,6 +7,7 @@ import SearchForm from "./SearchForm";
 
 export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const [product, setProduct] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   const inputRefs = useRef({});
 
   useEffect(() => {
@@ -53,9 +54,12 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
         Our Products
       </h2>
-      <SearchForm />
+      <SearchForm setSearchInput={setSearchInput} />
       <ul className="list-none mx-auto my-12 flex flex-wrap items-center gap-8">
-        {product.map((productItem) => {
+        {product.filter((productItem) =>
+         productItem.name.toLowerCase().includes(searchInput.toLowerCase())
+        )
+        .map((productItem) => {
           const productInputValue = inputRefs.current[productItem.id];
 
           return (
@@ -107,14 +111,14 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               <p className="mb:flex text-center text-slate-500 dark:text-slate-400 mt-2">
                 {productItem.stock > 0 ? (
                   <>
-                    <BsCheckLg color="green" className="hidden sm:inline-block" size={29} />
+                    <BsCheckLg color="green" className="inline-block" size={28} />
                     <span className="ml-2 text-xl">
                       In stock ({productItem.stock})
                     </span>
                   </>
                 ) : (
                   <>
-                    <BsXLg color="red" size={28} />
+                    <BsXLg color="red" className="inline-block" size={28} />
                     <span className="inline text-xl mx-1">Not available</span>
                   </>
                 )}
