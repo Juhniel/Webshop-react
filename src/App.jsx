@@ -119,7 +119,7 @@ export default function App() {
         orderStatus={orderStatus}
         onClose={() => setOrderConfirmVisible(false)}
       />
-      <Footer />
+      <Footer theme={theme} />
     </>
   );
 }
