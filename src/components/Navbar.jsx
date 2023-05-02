@@ -22,7 +22,7 @@ export default function Navbar({
         {theme === "light" ? <>
         <a href="#hero" onClick={hideCheckout}>
           <img
-            src="assets/blacklogo.png"
+            src="assets/img/logo/blacklogo.png"
             alt=""
             className="w-1/4 m-2"
           />
@@ -30,7 +30,7 @@ export default function Navbar({
         <>
          <a href="#hero" onClick={hideCheckout}>
           <img
-            src="assets/whitelogo.png"
+            src="assets/img/logo/whitelogo.png"
             alt=""
             className="w-1/4 m-2"
           />
@@ -75,7 +75,7 @@ export default function Navbar({
             </a>
             {cartItemCount > 0 && (
               <span
-                className="absolute top-5 right-20 transform translate-x-3 bg-red-500
+                className="absolute top-11 right-20 transform translate-x-3 bg-red-500
              text-white rounded-full text-xs font-bold px-2 py-1"
               >
                 {cartItemCount}

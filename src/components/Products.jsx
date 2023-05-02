@@ -68,7 +68,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-teal-50 dark:bg-gray-800 py-6 px-2 rounded-3xl shadow-xl"
             >
               <img
-                src={`assets/${productItem.name}.png`}
+                src={`assets/img/products/${productItem.name}.png`}
                 alt={productItem.name}
                 className="object-fit:cover h-24 mb-6"
               />

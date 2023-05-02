@@ -10,7 +10,7 @@ export default function Header() {
                         "We support fair wages for our employees and local farmers" - Juhn Kim, CEO & Founder of k-pastries
                     </p>
                 </article>
-                <img src="assets/bakery.png"  alt="bakery" className="w-1/2" />
+                <img src="assets/img/header/bakery.png"  alt="bakery" className="w-1/2" />
             </section>
     )
 }
