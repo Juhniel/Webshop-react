@@ -22,7 +22,7 @@ export default function Navbar({
         {theme === "light" ? <>
         <a href="#hero" onClick={hideCheckout}>
           <img
-            src="/media/logo/blacklogo.png"
+            src="assets/blacklogo.png"
             alt=""
             className="w-1/4 m-2"
           />
@@ -30,7 +30,7 @@ export default function Navbar({
         <>
          <a href="#hero" onClick={hideCheckout}>
           <img
-            src="/media/logo/whitelogo.png"
+            src="assets/whitelogo.png"
             alt=""
             className="w-1/4 m-2"
           />
