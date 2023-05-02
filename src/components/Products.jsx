@@ -11,11 +11,17 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const inputRefs = useRef({});
 
   useEffect(() => {
+    const newInputRefs = {};
+  
     product.forEach((productItem) => {
-      if (!inputRefs.current[productItem.id]) {
-        inputRefs.current[productItem.id] = React.createRef();
+      if (inputRefs.current[productItem.id]) {
+        newInputRefs[productItem.id] = inputRefs.current[productItem.id];
+      } else {
+        newInputRefs[productItem.id] = React.createRef();
       }
     });
+  
+    inputRefs.current = newInputRefs;
   }, [product]);
   
   // adding to cart
