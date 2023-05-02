@@ -7,6 +7,7 @@ export default function Navbar({
   toggleTheme,
   showCheckout,
   hideCheckout,
+  theme
 }) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
@@ -17,13 +18,25 @@ export default function Navbar({
   return (
     <header className="bg-teal-500 dark:bg-teal-800 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
+
+        {theme === "light" ? <>
         <a href="#hero" onClick={hideCheckout}>
           <img
-            src="../src/media/img/logo.png"
+            src="/media/logo/blacklogo.png"
             alt=""
-            className="w-1/3 border-2 rounded-full"
+            className="w-1/4 m-2"
+          />
+        </a></> : 
+        <>
+         <a href="#hero" onClick={hideCheckout}>
+          <img
+            src="/media/logo/whitelogo.png"
+            alt=""
+            className="w-1/4 m-2"
           />
         </a>
+        </>}
+        
         <div className="flex items-center">
           <button
             onClick={handleMenuClick}

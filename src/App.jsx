@@ -96,6 +96,7 @@ export default function App() {
         toggleTheme={handleThemeSwitch}
         showCheckout={showCheckout}
         hideCheckout={hideCheckout}
+        theme={theme}
       />
       {checkoutVisible ? (
         <Checkout
