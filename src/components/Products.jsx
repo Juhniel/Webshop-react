@@ -9,7 +9,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const [product, setProduct] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const inputRefs = useRef({});
-  const productImageSrc = new URL(`/media/product/${productItem.name}.png`, import.meta.url).href;
+
   useEffect(() => {
     product.forEach((productItem) => {
       if (!inputRefs.current[productItem.id]) {
@@ -68,7 +68,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               className=" md:w-1/4 w-2/3 mx-auto flex flex-col items-center border border-solid border-slate-900 dark:border-gray-100 bg-teal-50 dark:bg-gray-800 py-6 px-2 rounded-3xl shadow-xl"
             >
               <img
-                src={productImageSrc}
+                src={`/media/product/${productItem.name}.png`}
                 alt={productItem.name}
                 className="object-fit:cover h-24 mb-6"
               />
