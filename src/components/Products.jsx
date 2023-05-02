@@ -2,35 +2,42 @@ import React, { useEffect, useState, useRef} from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { BsCheckLg } from "react-icons/bs"
 import { BsXLg } from "react-icons/bs";
-import { BsBell } from "react-icons/bs"
+import { BsBell, BsBellSlash } from "react-icons/bs"
 import SearchForm from "./SearchForm";
 
 export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const [product, setProduct] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const inputRefs = useRef({});
-
+  const [notification, setNotification] = useState(false);
+  const productAmountRefs = useRef({});
+  
+  // Skapar en Ref för varje product id 
   useEffect(() => {
     product.forEach((productItem) => {
-      if (!inputRefs.current[productItem.id]) {
-        inputRefs.current[productItem.id] = React.createRef();
+      if (!productAmountRefs.current[productItem.id]) {
+        productAmountRefs.current[productItem.id] = React.createRef();
       }
     });
   }, [product]);
   
   // adding to cart
   function handleAddCart(productItem, amount) {
-    // Check if product already exists in the cart
+    // Kollar om produkten redan finns i kundvagn
     const existingProduct = cart.find(item => item.id === productItem.id);
-  
+    
+    // Om produkten redan finns i kundvagnen så lägger vi bara till antalet
     if (existingProduct) {
-      // Update the amount of the existing product
       updateCartItemAmount(existingProduct, existingProduct.amount + amount);
     } else {
-      // Add the product as a new item
+      // Annars lägger vi till en ny produkten med antal.
       const productWithAmount = { ...productItem, amount };
       addToCart(productWithAmount);
     }
+  }
+
+  // Togglar mellan true och false på om kunden vill ha notifikationer om produkten är slut på lager
+  function toggleNotify() {
+    setNotification(!notification)
   }
 
   async function getProducts() {
@@ -41,8 +48,6 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
     const products = Object.values(data);
     setProduct(products);
   }
-
-  
 
   useEffect(() => {
     getProducts();
@@ -60,7 +65,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
          productItem.name.toLowerCase().includes(searchInput.toLowerCase())
         )
         .map((productItem) => {
-          const productInputValue = inputRefs.current[productItem.id];
+          const productInputValue = productAmountRefs.current[productItem.id];
 
           return (
             <li
@@ -75,7 +80,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
               <h3 className="text-3xl text-center text-slate-900 dark:text-white">
                 {productItem.name}
               </h3>
-              <p className="hidden sm:block text-3xl text-center text-slate-500 dark:text-slate-400 mt-2">
+              <p className="hidden sm:block text-3xl text-center text-slate-500 dark:text-white mt-2">
                 ${productItem.price}
               </p>
 
@@ -85,7 +90,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
                 max={productItem.stock}
                 className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
                 defaultValue={1}
-                ref={inputRefs.current[productItem.id]}
+                ref={productAmountRefs.current[productItem.id]}
               />
 
               {productItem.stock > 0 ? (
@@ -102,8 +107,8 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
                   <span className="ml-3 text-xl">Add to cart</span>
                 </button>
               ) : (
-                <button className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600">
-                  <BsBell />
+                <button className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600" onClick={toggleNotify}>
+                  {notification ? <BsBell /> : <BsBellSlash />}
                   <span className="ml-2 text-xl">Notify me</span>
                 </button>
               )}

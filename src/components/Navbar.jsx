@@ -7,36 +7,40 @@ export default function Navbar({
   toggleTheme,
   showCheckout,
   hideCheckout,
-  theme
+  theme,
 }) {
+
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   function handleMenuClick() {
-    setMobileMenuVisible((prevState) => !prevState);
+    setMobileMenuVisible(!mobileMenuVisible);
   }
 
   return (
     <header className="bg-teal-500 dark:bg-teal-800 text-white sticky top-0 z-10">
       <section className="max-w-4xl mx-auto p-2 flex justify-between items-center origin-top animate-open-menu">
+        {theme === "light" ? (
+          <>
+            <a href="#hero" onClick={hideCheckout}>
+              <img
+                src="assets/img/logo/blacklogo.png"
+                alt=""
+                className="w-1/4 m-2"
+              />
+            </a>
+          </>
+        ) : (
+          <>
+            <a href="#hero" onClick={hideCheckout}>
+              <img
+                src="assets/img/logo/whitelogo.png"
+                alt=""
+                className="w-1/4 m-2"
+              />
+            </a>
+          </>
+        )}
 
-        {theme === "light" ? <>
-        <a href="#hero" onClick={hideCheckout}>
-          <img
-            src="assets/img/logo/blacklogo.png"
-            alt=""
-            className="w-1/4 m-2"
-          />
-        </a></> : 
-        <>
-         <a href="#hero" onClick={hideCheckout}>
-          <img
-            src="assets/img/logo/whitelogo.png"
-            alt=""
-            className="w-1/4 m-2"
-          />
-        </a>
-        </>}
-        
         <div className="flex items-center">
           <button
             onClick={handleMenuClick}
@@ -73,6 +77,7 @@ export default function Navbar({
             <a href="#" className="hover:opacity-90" onClick={showCheckout}>
               <FaShoppingCart />
             </a>
+            <ThemeToggle toggleTheme={toggleTheme} />
             {cartItemCount > 0 && (
               <span
                 className="absolute top-11 right-20 transform translate-x-3 bg-red-500
@@ -81,7 +86,6 @@ export default function Navbar({
                 {cartItemCount}
               </span>
             )}
-            <ThemeToggle toggleTheme={toggleTheme} />
           </nav>
         </div>
       </section>
@@ -134,6 +138,7 @@ export default function Navbar({
           >
             Checkout
           </a>
+          <ThemeToggle toggleTheme={toggleTheme} />
         </nav>
       </section>
     </header>

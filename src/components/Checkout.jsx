@@ -9,11 +9,14 @@ export default function Checkout({
   emptyCart,
   orderConfirm,
 }) {
+
+  // Hanterar uppdatering av produktantal i kundvagn
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
     updateCartItemAmount(productItem, updatedAmount);
   }
 
+  // Räknar ut totala summa av produkter i kundvagn
   function calculateTotalPrice() {
     return cart.reduce((total, item) => total + item.amount * item.price, 0);
   }

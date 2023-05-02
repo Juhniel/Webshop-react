@@ -14,8 +14,6 @@ export default function App() {
 
   async function handleCheckoutPayment() {
     const url = "https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products.json";
-  
-    // Fetch the current stock from Firebase
     const response = await fetch(url);
     const data = await response.json();
   
@@ -35,7 +33,7 @@ export default function App() {
           },
         };
   
-        // Update the stock in Firebase
+        // Uppdatera firebase lager
         await fetch(`https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products/${productKey}.json`, options);
         setOrderStatus(true);
         emptyCart();
@@ -46,24 +44,23 @@ export default function App() {
     setOrderConfirmVisible(true);
   }
 
-  
-
-  const updateCartItemAmount = (productItem, updatedAmount) => {
+  // Uppdatera antalet i kundvagn
+  function updateCartItemAmount(productItem, updatedAmount) {
     const updatedCart = cart.map((item) =>
       item.id === productItem.id ? { ...item, amount: updatedAmount } : item
     );
     setCart(updatedCart);
-  };
-
-  const removeFromCart = (productItem) => {
+  }
+  // Sortera ut produkt från kundvagn
+  function removeFromCart(productItem) {
     const updatedCart = cart.filter((item) => item.id !== productItem.id);
     setCart(updatedCart);
-  };
+  }
 
-  const emptyCart = () => {
+  function emptyCart() {
     setCart([]);
     showCheckout();
-  };
+  }
 
   function showCheckout() {
     setCheckoutVisible(true);
@@ -73,10 +70,17 @@ export default function App() {
     setCheckoutVisible(false)
   }
 
-  const handleAddToCart = (productItem) => {
+  // Lägg till produkt till kundvagn
+  function handleAddToCart(productItem) {
     setCart([...cart, productItem]);
-  };
+  }
 
+  // Håller reda på dark/lightmode
+  function handleThemeSwitch() {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
+
+  // Lägger till tar bort class beroende på funktionen ovan
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -84,10 +88,6 @@ export default function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [theme]);
-
-  function handleThemeSwitch() {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }
 
   return (
     <>
@@ -119,7 +119,7 @@ export default function App() {
         orderStatus={orderStatus}
         onClose={() => setOrderConfirmVisible(false)}
       />
-      <Footer theme={theme} />
+      <Footer />
     </>
   );
 }

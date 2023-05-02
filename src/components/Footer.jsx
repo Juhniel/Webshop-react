@@ -1,4 +1,4 @@
-export default function Footer({ theme }) {
+export default function Footer() {
     return (
       <footer id="footer" className="bg-teal-500 text-white text-xl dark:bg-teal-800">
         <section className="max-w-4xl py-6 mx-auto p-4 flex flex-col sm:flex-row sm:justify-between">
