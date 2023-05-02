@@ -11,17 +11,11 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
   const inputRefs = useRef({});
 
   useEffect(() => {
-    const newInputRefs = {};
-  
     product.forEach((productItem) => {
-      if (inputRefs.current[productItem.id]) {
-        newInputRefs[productItem.id] = inputRefs.current[productItem.id];
-      } else {
-        newInputRefs[productItem.id] = React.createRef();
+      if (!inputRefs.current[productItem.id]) {
+        inputRefs.current[productItem.id] = React.createRef();
       }
     });
-  
-    inputRefs.current = newInputRefs;
   }, [product]);
   
   // adding to cart
@@ -99,7 +93,7 @@ export default function Products({ addToCart, updateCartItemAmount, cart}) {
                   onClick={() =>
                     handleAddCart(
                       productItem,
-                      parseInt(productInputValue.current.value) || 1
+                      parseInt(productInputValue?.current?.value) || 1
                     )
                   }
                   className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600"
