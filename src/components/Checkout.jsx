@@ -9,7 +9,6 @@ export default function Checkout({
   emptyCart,
   orderConfirm,
 }) {
-
   // Hanterar uppdatering av produktantal i kundvagn
   function handleAmountChange(e, productItem) {
     const updatedAmount = parseInt(e.target.value) || 1;
@@ -29,6 +28,16 @@ export default function Checkout({
       <h2 className="text-4xl font-bold text-center sm:text-5xl mb-14 text-slate-900 dark:text-white">
         Checkout
       </h2>
+      {cart.length > 0 ? (
+        ""
+      ) : (
+        <>
+          {" "}
+          <h3 className="text-4xl font-bold text-center sm:text-5xl mb-8 text-slate-900 dark:text-white">
+            Your cart is empty..
+          </h3>
+        </>
+      )}
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -86,7 +95,7 @@ export default function Checkout({
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
                     onClick={() => removeFromCart(productItem)}
                   >
-                    <BsTrash3 className="text-xl"/>
+                    <BsTrash3 className="text-xl" />
                   </a>
                 </td>
               </tr>
@@ -96,7 +105,7 @@ export default function Checkout({
                 colSpan="5"
                 className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-right text-xl"
               >
-                {cart.length > 0 ? "Total Price:" : "Your cart is empty"}
+                {cart.length > 0 ? "Total Price:" : ""}
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-xl">
                 {cart.length > 0 ? `$${calculateTotalPrice()}` : ""}
