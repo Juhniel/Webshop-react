@@ -2,7 +2,8 @@ import Products from "./Products";
 import Reviews from "./Reviews";
 import Contact from "./Contact";
 import Header from "./Header";
-export default function MainContent({handleAddToCart, updateCartItemAmount, cart}) {
+
+export default function MainContent({handleAddToCart}) {
     return(
         
         <main className="max-w-4xl mx-auto">
@@ -10,7 +11,7 @@ export default function MainContent({handleAddToCart, updateCartItemAmount, cart
             <Header />
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 
-            <Products addToCart={handleAddToCart} updateCartItemAmount={updateCartItemAmount} cart={cart}/>
+            <Products addToCart={handleAddToCart} />
 
             <hr className="mx-auto bg-black dark:bg-white w-1/2"/>
 

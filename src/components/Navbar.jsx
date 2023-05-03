@@ -3,7 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 import { FaShoppingCart } from "react-icons/fa";
 
 export default function Navbar({
-  cartItemCount,
+  getTotalCartItems,
   toggleTheme,
   showCheckout,
   hideCheckout,
@@ -78,12 +78,12 @@ export default function Navbar({
               <FaShoppingCart />
             </a>
             <ThemeToggle toggleTheme={toggleTheme} />
-            {cartItemCount > 0 && (
+            {getTotalCartItems() > 0 && (
               <span
                 className="absolute top-11 right-20 transform translate-x-3 bg-red-500
              text-white rounded-full text-xs font-bold px-2 py-1"
               >
-                {cartItemCount}
+                {getTotalCartItems()}
               </span>
             )}
           </nav>

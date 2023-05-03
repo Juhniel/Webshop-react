@@ -1,8 +1,8 @@
 import Navbar from "./components/Navbar";
-import MainContent from "./components/MainContent";
+import MainContent from "./components/main/MainContent";
 import Footer from "./components/Footer";
-import Checkout from "./components/Checkout";
-import OrderConfirm from "./components/OrderConfirm";
+import Checkout from "./components/checkout/Checkout";
+import OrderConfirm from "./components/checkout/OrderConfirm";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -12,16 +12,20 @@ export default function App() {
   const [orderConfirmVisible, setOrderConfirmVisible] = useState(false)
   const [orderStatus, setOrderStatus] = useState(false);
 
+  function getTotalCartItems() {
+    return cart.reduce((total, item) => total + item.amount, 0);
+  }
+
   async function handleCheckoutPayment() {
     const url = "https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products.json";
     const response = await fetch(url);
     const data = await response.json();
   
-    // Update stock for each product in the cart
+    // Update lager för varje produkt
     for (const cartItem of cart) {
       const productKey = `Product${cartItem.id}`;
       const productStock = data[productKey]?.stock;
-  
+      
       if (productStock !== undefined && productStock >= cartItem.amount) {
         const updatedStock = productStock - cartItem.amount;
   
@@ -50,6 +54,7 @@ export default function App() {
       item.id === productItem.id ? { ...item, amount: updatedAmount } : item
     );
     setCart(updatedCart);
+
   }
   // Sortera ut produkt från kundvagn
   function removeFromCart(productItem) {
@@ -71,8 +76,14 @@ export default function App() {
   }
 
   // Lägg till produkt till kundvagn
-  function handleAddToCart(productItem) {
-    setCart([...cart, productItem]);
+  function handleAddToCart(productItem, productAmount) {
+    const existingCartItem = cart.find(item => item.id === productItem.id);
+
+    if (existingCartItem) {
+      updateCartItemAmount(existingCartItem, existingCartItem.amount + productAmount);
+    } else {
+      setCart([...cart, { ...productItem, amount: productAmount }]);
+    }
   }
 
   // Håller reda på dark/lightmode
@@ -92,7 +103,7 @@ export default function App() {
   return (
     <>
       <Navbar
-        cartItemCount={cart.length}
+        getTotalCartItems={getTotalCartItems}
         toggleTheme={handleThemeSwitch}
         showCheckout={showCheckout}
         hideCheckout={hideCheckout}
@@ -110,8 +121,6 @@ export default function App() {
       ) : (
         <MainContent
           handleAddToCart={handleAddToCart}
-          updateCartItemAmount={updateCartItemAmount}
-          cart={cart}
         />
       )}
       <OrderConfirm 

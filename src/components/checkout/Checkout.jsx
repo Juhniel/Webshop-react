@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
 
 export default function Checkout({
