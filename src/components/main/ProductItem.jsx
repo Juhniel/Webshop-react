@@ -33,7 +33,7 @@ export default function ProductItem({ productItem, addToCart }) {
         className="mt-2 w-12 text-xl text-center text-slate-500 border-2 shadow rounded block"
         value={productAmount}
         onChange={(e) =>
-          setProductAmount(Math.max(1, parseInt(e.target.value) || 1))
+          setProductAmount((parseInt(e.target.value) || 1))
         }
       />
 
@@ -47,8 +47,7 @@ export default function ProductItem({ productItem, addToCart }) {
         </button>
       ) : (
         <button className="text-slate-500 mt-2 text-2xl flex items-center justify-center hover:text-green-600" onClick={toggleNotify}>
-          {notification ? <BsBell /> : <BsBellSlash />}
-          <span className="ml-2 text-xl">Notify me</span>
+          {notification ? <><BsBell /> <span className="ml-2 text-xl">Don't notify me</span></>: <><BsBellSlash /><span className="ml-2 text-xl">Notify me</span></>}
         </button>
       )}
 

@@ -21,7 +21,7 @@ export default function App() {
     const response = await fetch(url);
     const data = await response.json();
   
-    // Update lager för varje produkt
+    // Uppdatera lager för varje produkt
     for (const cartItem of cart) {
       const productKey = `Product${cartItem.id}`;
       const productStock = data[productKey]?.stock;

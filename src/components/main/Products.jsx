@@ -7,7 +7,7 @@ import { fadeIn } from "../../animationVariants"
 export default function Products({ addToCart }) {
   const [product, setProduct] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
+  
   async function getProducts() {
     const url =
       "https://webshop-6dad9-default-rtdb.europe-west1.firebasedatabase.app/Products.json";
