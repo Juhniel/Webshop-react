@@ -1,7 +1,7 @@
 import Products from "./Products";
-import Reviews from "./Reviews";
-import Contact from "./Contact";
-import Header from "./Header";
+import Reviews from "../common/Reviews";
+import Contact from "../common/Contact";
+import Header from "../common/Header";
 
 export default function MainContent({handleAddToCart}) {
     return(

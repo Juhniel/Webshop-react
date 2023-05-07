@@ -1,6 +1,14 @@
+import { motion } from "framer-motion"
+import { fadeIn } from "../../animationVariants"
+
 export default function SearchForm({setSearchInput}) {
   return (
-    <form className="flex justify-center my-12">
+    <motion.form 
+    variants={fadeIn("right", 0.3)}
+    initial="hidden"
+    whileInView={"show"}
+    viewport={{ once: false, amount: 0.3 }}
+    className="flex justify-center my-12">
       <label
         htmlFor="filter-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -33,6 +41,6 @@ export default function SearchForm({setSearchInput}) {
           required
         />
       </div>
-    </form>
+    </motion.form>
   );
 }

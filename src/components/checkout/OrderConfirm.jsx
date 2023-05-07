@@ -6,10 +6,7 @@ export default function OrderConfirm({ visible, orderStatus, onClose }) {
   }
 
   return (
-    <div
-      id="staticModal"
-      className="fixed top-0 left-0 right-0 z-50 w-full h-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 flex items-center justify-center"
-    >
+    <div className="fixed top-0 left-0 right-0 z-50 w-full h-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 flex items-center justify-center">
       <div className="text-center relative w-full max-w-2xl max-h-full">
         <div className="text-center relative bg-white rounded-lg shadow dark:bg-gray-700">
         <div className="flex flex-col items-center justify-between p-4 border-b rounded-t dark:border-gray-600">

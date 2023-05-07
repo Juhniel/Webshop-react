@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-import SearchForm from "./SearchForm";
-
+import SearchForm from "../common/SearchForm";
+import { motion } from "framer-motion"
+import { fadeIn } from "../../animationVariants"
 
 export default function Products({ addToCart }) {
   const [product, setProduct] = useState([]);
@@ -23,11 +24,21 @@ export default function Products({ addToCart }) {
 
   return (
     <section id="products" className="p-6 my-12">
-     <h2 className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
+     <motion.h2 
+     variants={fadeIn("right", 0.3)}
+     initial="hidden"
+     whileInView={"show"}
+     viewport={{ once: false, amount: 0.3 }}
+     className="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white">
         Our Products
-      </h2>
+      </motion.h2>
     <SearchForm setSearchInput={setSearchInput} />
-      <ul className="list-none mx-auto my-12 flex flex-wrap items-center gap-8">
+      <motion.ul 
+      variants={fadeIn("left", 0.3)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.3 }}
+      className="list-none mx-auto my-12 flex flex-wrap items-center gap-8">
         {product.filter((productItem) =>   productItem.name.toLowerCase().includes(searchInput.toLowerCase())
         )
         .map((product) => (
@@ -37,7 +48,7 @@ export default function Products({ addToCart }) {
             addToCart={addToCart}
           />
         ))}
-      </ul>
+      </motion.ul>
       </section>
   );
 }

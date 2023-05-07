@@ -1,6 +1,6 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./components/common/Navbar";
 import MainContent from "./components/main/MainContent";
-import Footer from "./components/Footer";
+import Footer from "./components/common/Footer";
 import Checkout from "./components/checkout/Checkout";
 import OrderConfirm from "./components/checkout/OrderConfirm";
 import { useState, useEffect } from "react";
@@ -91,7 +91,7 @@ export default function App() {
     setTheme(theme === "dark" ? "light" : "dark");
   }
 
-  // Lägger till tar bort class beroende på funktionen ovan
+  // Lägger till tar bort class för dark/lightmode
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");

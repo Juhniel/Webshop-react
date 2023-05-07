@@ -1,6 +1,4 @@
 export default function ThemeToggle({ toggleTheme }) {
-
-
   return (
     <button
       onClick={toggleTheme}
